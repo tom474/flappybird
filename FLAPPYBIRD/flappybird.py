@@ -1,20 +1,8 @@
 import pygame  # use pygame module
 import random
 import button
-import HandDetector as hd
-import threading 
 
-class HandDetectorThread:
-    def __init__(self):
-        self.hand_detector = hd.HandDetector()
-        self.hand_detector_thread = threading.Thread(target=self.hand_detector.start)
-        self.hand_detector_thread.start()
-    
-''' Hand Controller '''
-hand_detector = HandDetectorThread()    
-   
-''' RGB color selector '''
-GREEN = (0, 200, 0)  
+GREEN = (0, 200, 0)  # RGB color selector
 BLUE = (0, 0, 255)
 RED = (255, 0, 0)
 BLACK = (0, 0, 0)
@@ -22,7 +10,7 @@ YELLOW = (255, 255, 0)
 
 
 def level(speed, acceleration, tube_change):
-    pygame.init()  # initialize pygame functions
+    pygame.init()  # initialise pygame functions
     width = 800
     height = 600
     screen = pygame.display.set_mode((width, height))  # set the width and height of the game screen
@@ -178,7 +166,7 @@ def level(speed, acceleration, tube_change):
                 space_txt = font.render("PRESS SPACE TO JUMP", True, RED)
                 screen.blit(space_txt, (300, 70))
 
-        ''' Set event such as mouse-click, keyboard buttons, quit'''
+        ''' Set event such as mouseclick, keyboard buttons, quit'''
         for event in pygame.event.get():
             if event.type == pygame.QUIT:  # when you click on X button, it will exit the game
                 running = False
@@ -271,6 +259,6 @@ def main_menu():
 
         pygame.display.update()
     pygame.quit()
-    hand_detector.hd.stop()
-    
+
+
 main_menu()
